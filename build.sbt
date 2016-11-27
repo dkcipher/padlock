@@ -4,7 +4,7 @@ name := "padlock"
 
 organization := "nl.fizzylogic"
 
-version := "0.1.0"
+version := "0.2.0-SNAPSHOT"
 
 resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/maven-releases/"
 
