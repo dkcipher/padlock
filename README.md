@@ -5,7 +5,7 @@ An simple to use authorization module for Play 2.5.x
 This project allows you to add very basic authorization logic 
 to your Play application.
 
-## Getting started
+## Get started
 Download the sources from this repository and run
 
 ``` shell
@@ -59,9 +59,14 @@ class MyAuthorizationHandler extends AuthorizationHandler {
 }
 ```
 
+Whenever an `AuthenticatedAction` determines that there's no current user
+it will invoke the `unauthorized` method on the `AuthorizationHandler`.
+
+The current user is determined using the `principal` method on the 
+`AuthorizationHandler`.
+
 The authorization logic relies on a `Principal` implementation to
-get information about the current user. You can create your own
-implementation of this by implementing the `Principal` trait.
+get information about the current user. You can create your own by implementing the `Principal` trait.
 
 ## More complex authorization operations
 The basic authorization operations allow you to specify whether
@@ -80,6 +85,19 @@ class MyAuthorizationPolicy extends MyAuthorizationPolicy {
   }
 }
 ```
+
+You can use the authorization policy using a specific action refiner
+implementation in the `AuthorizationSupport` trait.
+
+```scala
+def myAction = (AuthenticatedAction andThen authorizeUsingPolicy(myPolicyInstance)) {
+  Ok("Hello world")
+}
+```
+
+When the user is not authorized to access the action based on the policy, 
+the user will automatically get the result as produced by the `denied` method
+in the `AuthorizationHandler`.
 
 ## Other features that are coming soon
 One of my biggest gripes with existing frameworks is that they don't allow
