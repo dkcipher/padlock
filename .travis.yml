@@ -1,0 +1,4 @@
+language: scala
+scala:
+  - 2.11.8
+script: sbt -no-colors ++$TRAVIS_SCALA_VERSION scalastyle test
