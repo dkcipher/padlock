@@ -1,5 +1,6 @@
 # Padlock
 [![Build Status](https://travis-ci.org/wmeints/padlock.svg?branch=master)](https://travis-ci.org/wmeints/padlock)
+
 An simple to use authorization module for Play 2.5.x
 This project allows you to add very basic authorization logic 
 to your Play application.
